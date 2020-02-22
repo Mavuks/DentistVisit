@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:jsp="http://java.sun.com/jsf/composite"
+>
+
+
+<h:head>
+    <title>PrimeFaces DataTable Example</title>
+</h:head>
+
+<h:body>
+    <p:subTable>
+        <ul>
+            <li><a href="/">Registeerimine</a></li>
+            <li><a href="appointments" >Registreeringud</a></li>
+        </ul>
+    </p:subTable>
+    <h1> Nimekiri uus</h1>
+    <!--@elvariable id="DentistVisitService" type="com.cgi.dentistapp.service.DentistVisitService"-->
+    <p:dataTable var="vit" value="#{dentistVisitService.visits}">
+        <p:column headerText="Name">
+            <h:outputText value="#{vit.dentistName}" />
+        </p:column>
+
+        <p:column headerText="Time">
+            <h:outputText value="#{vit.visitTime}" />
+        </p:column>
+
+    </p:dataTable>
+
+</h:body>
+</html>

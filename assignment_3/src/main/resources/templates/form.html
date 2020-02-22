@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <link href="main.css" type="text/css">
+</head>
+<body>
+<form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
+    <table>
+        <ul>
+            <li><a href="/">Registeerimine</a></li>
+            <li><a href="appointments" >Registreeringud</a></li>
+        </ul>
+        <tr>
+            <td><p th:text="#{dentist.name}">dentist.name</p></td>
+            <td><input type="text" th:field="*{dentistName}"/></td>
+            <td th:if="${#fields.hasErrors('dentistName')}" th:errors="*{dentistName}">name.error</td>
+        </tr>
+        <tr>
+            <td><p th:text="#{visit.date}">visit.date</p></td>
+            <td><input type="text" th:field="*{visitTime}"/></td>
+            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">date.error</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" th:text="#{register.visit}"></button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+</style>
+</html>

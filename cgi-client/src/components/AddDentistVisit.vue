@@ -2,6 +2,9 @@
   <div class="submitform">
     <div>
         <div class="form-group">
+        <div  v-if="Errors.length">
+            <p v-for="(error, index) in Errors" v-bind:key="index"> {{error}}</p>
+        </div>
 
           <label for="dentistName">Dentist name</label>
           <!-- <input type="text" class="form-control" id="dentistName"  name="dentistName"> -->
@@ -33,6 +36,7 @@ export default {
   name: "add-Visit",
   data() {
     return {
+      Errors: [],
       Names: [],
       Times: [],
       Dentist: {
@@ -69,7 +73,14 @@ export default {
         .post("/", data)
         .then(response => {
           console.log(response.data);
-          this.$router.push('/appointments');
+          if(response.data === 'BAD_REQUEST'){
+            this.$router.push('/add');
+            this.Errors.push("Valitud Aeg on juba valitud. Valige muud aeg!");
+            console.log(this.Errors);
+          }else{
+            this.$router.push('/appointments');
+          }
+
         })
         .catch(e => {
           console.log(e);

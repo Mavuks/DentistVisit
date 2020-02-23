@@ -3,6 +3,7 @@ package com.cgi.dentistapp.controller;
 import com.cgi.dentistapp.dto.DentistVisit;
 import com.cgi.dentistapp.service.DentistVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.sql.SQLOutput;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,13 +52,18 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @Transactional
     @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void postDentistVisit(@Valid @RequestBody DentistVisit dentistVisitDTO) {
+    public HttpStatus postDentistVisit(@Valid @RequestBody DentistVisit dentistVisit) throws ParseException {
+
+         boolean proov = dentistVisitService.findByDentistName(dentistVisit.getDentistName(), dentistVisit.getVisitTime());
+
+         if(proov){
+             dentistVisitService.addVisit(dentistVisit);
+         }else{
+             return HttpStatus.BAD_REQUEST;
+         }
 
 
-       // System.out.println(dentistVisitService.findByDentistName(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitTime()));
-
-            dentistVisitService.addVisit(dentistVisitDTO);
-
+        return null;
     }
 
 

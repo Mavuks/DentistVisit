@@ -35,7 +35,7 @@ public class DentistVisit extends BaseEntity {
 
     @NotNull
     @DateTimeFormat(pattern = "dd.MM.yyyy")
-    @JsonFormat(pattern = "dd.MM.yyyy HH:mm")
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm" , timezone = "Europe/Tallinn")
     Date visitTime;
 
     public String getDentistName() {

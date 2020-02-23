@@ -10,8 +10,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -56,18 +60,22 @@ public class DentistVisitService {
         }
     }
 
-    public boolean findByDentistName(String name, Date time){
-        TypedQuery<DentistVisit> query = em.createQuery("select p from DentistVisit p where p.dentistName = :name and p.visitTime = :time", DentistVisit.class);
+    public boolean findByDentistName(String name, Date time) throws ParseException {
+        List<DentistVisit> dentistVisits = getVisits();
+        DateFormat df = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        Date parsedDate = df.parse(String.valueOf(time));
+        SimpleDateFormat print = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
-        query.setParameter("name", name);
-        query.setParameter("time", time);
+        String result = print.format(parsedDate);
+        for (DentistVisit dentistVisit : dentistVisits) {
 
-        DentistVisit dentistVisit  = query.getSingleResult();
-        if(dentistVisit != null){
-            return false;
-        }else{
-            return true;
+            String dentistTime = print.format(dentistVisit.getVisitTime());
+            if (dentistTime.equals(result) && dentistVisit.getDentistName().equals(name)) {
+                return false;
+            }
         }
+
+        return true;
 
     }
 }

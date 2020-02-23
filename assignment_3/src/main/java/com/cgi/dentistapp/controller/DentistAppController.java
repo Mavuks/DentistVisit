@@ -30,37 +30,30 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
     @CrossOrigin
     @GetMapping("/appointments")
-    public List<DentistVisit> showAppointments(){
-        System.out.println(dentistVisitService.getVisits());
+    public List<DentistVisit> showAppointments() {
         return dentistVisitService.getVisits();
 
     }
+
     @CrossOrigin
     @RequestMapping(value = "appointments/{id}", method = RequestMethod.GET)
     public Optional<DentistVisit> getVisit(@PathVariable("id") Long id) {
-        System.out.println(id);
         return dentistVisitService.getVisit(id);
     }
 
-//    @CrossOrigin
-//    @RequestMapping(value = "appointment/{name}/{time}", method = RequestMethod.GET)
-//    public List<DentistVisitDTO> proof(@PathVariable("name") String name, @PathVariable("time") Date time) {
-//
-//        return (List<DentistVisitDTO>) dentistVisitService.findByDentistName(name,time);
-//    }
 
     @Transactional
     @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus postDentistVisit(@Valid @RequestBody DentistVisit dentistVisit) throws ParseException {
 
-         boolean proov = dentistVisitService.findByDentistName(dentistVisit.getDentistName(), dentistVisit.getVisitTime());
+        boolean post = dentistVisitService.findByDentistName(dentistVisit.getDentistName(), dentistVisit.getVisitTime());
 
-         if(proov){
-             dentistVisitService.addVisit(dentistVisit);
-         }else{
-             return HttpStatus.BAD_REQUEST;
-         }
+        if (post) {
+            dentistVisitService.addVisit(dentistVisit);
+        } else {
+            return HttpStatus.BAD_REQUEST;
+        }
 
 
         return null;
@@ -69,7 +62,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
     @CrossOrigin
     @DeleteMapping("appointments/{id}")
-    public void deleteDentistVisit(@PathVariable("id") Long id){
+    public void deleteDentistVisit(@PathVariable("id") Long id) {
         dentistVisitService.removeDentistVisit(id);
 
 
@@ -78,9 +71,20 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
 
     @CrossOrigin
     @Transactional
-    @RequestMapping(value = "appointments/{id}", method = RequestMethod.PUT,  consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateAppointment(@PathVariable Long id, @RequestBody DentistVisit dentistVisitDTO){
-            dentistVisitService.updateById(id, dentistVisitDTO);
+    @RequestMapping(value = "appointments/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public HttpStatus updateAppointment(@PathVariable Long id, @RequestBody DentistVisit dentistVisit) throws ParseException {
+
+        boolean post = dentistVisitService.findByDentistName(dentistVisit.getDentistName(), dentistVisit.getVisitTime());
+        if (post) {
+
+            dentistVisitService.updateById(id, dentistVisit);
+        } else {
+            return HttpStatus.BAD_REQUEST;
+        }
+
+
+        return null;
+
 
     }
 

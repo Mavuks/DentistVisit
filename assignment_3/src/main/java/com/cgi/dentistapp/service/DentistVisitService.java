@@ -25,9 +25,6 @@ public class DentistVisitService {
     @Autowired
     DentistVisitDTORepository dentistVisitDTORepository;
 
-    @PersistenceContext
-    private EntityManager em;
-
     @Transactional
     public void addVisit(@Valid DentistVisit dentistVisit) {
         dentistVisitDTORepository.save(dentistVisit);
@@ -47,7 +44,6 @@ public class DentistVisitService {
     }
 
     public Optional<DentistVisit> getVisit(Long id){
-        System.out.println(dentistVisitDTORepository.findById(id));
         return  dentistVisitDTORepository.findById(id);
     }
 

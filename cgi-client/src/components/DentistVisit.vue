@@ -60,7 +60,7 @@ export default {
         .then(response => {
 
          if(response.data === 'BAD_REQUEST'){
-            this.Errors.push("Valitud Aeg on juba valitud. Valige muu aeg!");
+            this.Errors.push("Valitud aeg on juba valitud. Valige muu aeg!");
             console.log(this.Errors);
           }else{
             this.$router.push('/appointments');

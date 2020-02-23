@@ -11,7 +11,7 @@
               <select v-model="Dentist.dentistName" class="form-control form-control-sm" >
                 <option v-for="(name, index) in Names" v-bind:key="index"> {{name.dentistName}}</option>
               </select>
-              <p v-if="!nameIsValid" class="error-message"> Palun valige Arst!</p>
+              <p v-if="!nameIsValid" class="error-message"> Palun valige arst!</p>
 
 
               <label for="time"><h3>Visiidi aeg</h3></label>
@@ -19,7 +19,7 @@
               <select v-model="Dentist.visitTime" class="form-control form-control-sm" >
                 <option v-for="(time, index) in Times" v-bind:key="index"> {{time.visitTime}}</option>
               </select>
-              <p v-if="!timeIsValid" class="error-message"> Palun Valige Aeg!</p>
+              <p v-if="!timeIsValid" class="error-message"> Palun valige aeg!</p>
         </div>
         <button v-on:click="saveDentist" class="btn-succsess">Registreeri</button>
 
@@ -74,7 +74,7 @@ export default {
           console.log(response.data);
           if(response.data === 'BAD_REQUEST'){
             this.$router.push('/add');
-            this.Errors.push("Valitud Aeg on juba valitud. Valige muu aeg!");
+            this.Errors.push("Valitud aeg on juba valitud. Valige muu aeg!");
             console.log(this.Errors);
           }else{
             this.$router.push('/appointments');

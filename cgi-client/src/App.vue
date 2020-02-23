@@ -2,7 +2,7 @@
   <div id="app">
       <div id="nav">
       <router-link to="/">Esileht</router-link> |
-      <router-link to="/Add">Registeerimine</router-link> |
+      <router-link to="/Add">Registreerimine</router-link> |
       <router-link to="/appointments">Registreeringud</router-link>
     </div>
     <router-view/>

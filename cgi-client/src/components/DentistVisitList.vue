@@ -1,14 +1,14 @@
 <template>
     <div class="list row">
         <div class="col-md-5">
-            <h4>Dentist Visit list</h4>
-            <input type="text" v-model="search" placeholder="search appointment">
+            <h4>Hambaarsti registreeringud</h4>
+            <input type="text" v-model="search" placeholder="Otsing">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col" >Dentist Name</th>
-                  <th scope="col">Visit Time</th>
-                  <th scope="col">Edit</th>
+                  <th scope="col" >Hambaarsti nimi</th>
+                  <th scope="col">Visiidi aeg</th>
+                  <th scope="col">Muuda</th>
                 </tr>
               </thead>
               <tbody v-for="(dentist, index) in filteredDentists" :key="index">
@@ -17,7 +17,7 @@
                 <td>   <router-link :to="{
                             name: 'dentist-details',
                             params: {dentist: dentist, id: dentist.id }
-                        }">Edit
+                        }">Muuda
                         </router-link> </td>
 
               </tbody>

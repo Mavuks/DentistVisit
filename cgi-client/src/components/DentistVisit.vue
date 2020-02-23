@@ -1,14 +1,16 @@
 <template>
   <div v-if="this.dentist">
-    <h4>Dentist Visit Details</h4>
-
+    <h4>Hambaarsti visiidi muutmine</h4>
+    <div  v-if="Errors.length">
+            <p v-for="(error, index) in Errors" v-bind:key="index"> {{error}}</p>
+        </div>
      <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col" >Dentist Name</th>
-                  <th scope="col">Visit Time</th>
-                  <th scope="col">Edit </th>
-                  <th scope="col">Delete</th>
+                   <th scope="col" >Hambaarsti nimi</th>
+                  <th scope="col">Visiidi aeg</th>
+                  <th scope="col">Muuda</th>
+                  <th scope="col">Kustuta</th>
                 </tr>
               </thead>
               <tbody >
@@ -20,8 +22,8 @@
                   <option v-for="(time, index) in Times" v-bind:key="index"> {{time.visitTime}}</option>
                   </select>
                 </td>
-                <td>  <span class="button is-small btn-success"  v-on:click="updateActive()">Edit </span></td>
-                <td>  <span class="button is-small btn-danger"  v-on:click="deleteDentist(dentist.id)">Delete </span></td>
+                <td>  <span class="button is-small btn-success"  v-on:click="updateActive()">Muuda </span></td>
+                <td>  <span class="button is-small btn-danger"  v-on:click="deleteDentist(dentist.id)">Kustuta </span></td>
               </tbody>
             </table>
 
@@ -36,6 +38,7 @@ export default {
   props: ["dentist"],
   data(){
     return{
+      Errors:[],
       Names:[],
       Times :[],
       Dentist:{
@@ -56,8 +59,12 @@ export default {
         .put("/appointments/" + this.dentist.id, data)
         .then(response => {
 
-          console.log(response.data);
-          this.$router.push('/appointments');
+         if(response.data === 'BAD_REQUEST'){
+            this.Errors.push("Valitud Aeg on juba valitud. Valige muu aeg!");
+            console.log(this.Errors);
+          }else{
+            this.$router.push('/appointments');
+          }
         })
         .catch(e => {
           console.log(e);

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
       <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/Add">Add</router-link> |
-      <router-link to="/appointments">Appointments</router-link>
+      <router-link to="/">Esileht</router-link> |
+      <router-link to="/Add">Registeerimine</router-link> |
+      <router-link to="/appointments">Registreeringud</router-link>
     </div>
     <router-view/>
   </div>

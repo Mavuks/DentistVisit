@@ -1,32 +1,31 @@
 <template>
-  <div class="submitform">
-    <div>
+<form>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-2">
         <div class="form-group">
-        <div  v-if="Errors.length">
-            <p v-for="(error, index) in Errors" v-bind:key="index"> {{error}}</p>
+              <div  v-if="Errors.length">
+                  <p v-for="(error, index) in Errors" v-bind:key="index"> {{error}}</p>
+              </div>
+              <label for="dentistName"><h3>Hambaarsti nimi </h3></label>
+              <!-- <input type="text" class="form-control" id="dentistName"  name="dentistName"> -->
+              <select v-model="Dentist.dentistName" class="form-control form-control-sm" >
+                <option v-for="(name, index) in Names" v-bind:key="index"> {{name.dentistName}}</option>
+              </select>
+              <p v-if="!nameIsValid" class="error-message"> Palun valige Arst!</p>
+
+
+              <label for="time"><h3>Visiidi aeg</h3></label>
+              <!-- <input type="datetime" class="form-control" id="time"  value="DD.MM.YYYY HH:MM" required v-model="Dentist.visitTime" name="time"> -->
+              <select v-model="Dentist.visitTime" class="form-control form-control-sm" >
+                <option v-for="(time, index) in Times" v-bind:key="index"> {{time.visitTime}}</option>
+              </select>
+              <p v-if="!timeIsValid" class="error-message"> Palun Valige Aeg!</p>
         </div>
+        <button v-on:click="saveDentist" class="btn-succsess">Registreeri</button>
 
-          <label for="dentistName">Dentist name</label>
-          <!-- <input type="text" class="form-control" id="dentistName"  name="dentistName"> -->
-          <select v-model="Dentist.dentistName" >
-            <option v-for="(name, index) in Names" v-bind:key="index"> {{name.dentistName}}</option>
-          </select>
-          <p v-if="!nameIsValid" class="error-message"> Palun valige Arst!</p>
-        </div>
-
-        <div class="form-group">
-          <label for="time">Visit time</label>
-          <!-- <input type="datetime" class="form-control" id="time"  value="DD.MM.YYYY HH:MM" required v-model="Dentist.visitTime" name="time"> -->
-          <select v-model="Dentist.visitTime">
-            <option v-for="(time, index) in Times" v-bind:key="index"> {{time.visitTime}}</option>
-
-            </select>
-            <p v-if="!timeIsValid" class="error-message"> Palun Valige Aeg!</p>
-        </div>
-
-        <button v-on:click="saveDentist" class="btn-succsses">Submit</button>
-    </div>
   </div>
+  </div>
+</form>
 </template>
 
 <script>
@@ -75,7 +74,7 @@ export default {
           console.log(response.data);
           if(response.data === 'BAD_REQUEST'){
             this.$router.push('/add');
-            this.Errors.push("Valitud Aeg on juba valitud. Valige muud aeg!");
+            this.Errors.push("Valitud Aeg on juba valitud. Valige muu aeg!");
             console.log(this.Errors);
           }else{
             this.$router.push('/appointments');

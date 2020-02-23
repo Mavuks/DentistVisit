@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h3>Hambaarsti visiidile registeerimise leht.</h3>
+    <h3>Hambaarsti visiidile registreerimise leht.</h3>
 
   </div>
 </template>

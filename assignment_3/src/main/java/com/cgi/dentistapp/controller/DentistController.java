@@ -30,12 +30,7 @@ public class DentistController extends WebMvcConfigurerAdapter {
         return dentistService.getDentists();
 
     }
-//    @CrossOrigin
-//    @RequestMapping(value = "appointments/{id}", method = RequestMethod.GET)
-//    public Optional<DentistVisitDTO> getVisit(@PathVariable("id") Long id) {
-//        System.out.println(id);
-//        return dentistVisitService.getVisit(id);
-//    }
+
 
     @Transactional
     @CrossOrigin
@@ -45,21 +40,6 @@ public class DentistController extends WebMvcConfigurerAdapter {
 
     }
 
-//
-//    @CrossOrigin
-//    @DeleteMapping("appointments/{id}")
-//    public void deleteDentistVisit(@PathVariable("id") Long id){
-//        dentistVisitService.removeDentistVisit(id);
-//
-//
-//    }
-//    @CrossOrigin
-//    @Transactional
-//    @RequestMapping(value = "appointments/{id}", method = RequestMethod.PUT,  consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public void updateAppointment(@PathVariable Long id, @RequestBody DentistVisitDTO dentistVisitDTO){
-//            dentistVisitService.updateById(id, dentistVisitDTO);
-//
-//    }
 
 
 }

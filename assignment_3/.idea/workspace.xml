@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76d29b26-d64c-417b-b82f-5e3cca411249" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="76d29b26-d64c-417b-b82f-5e3cca411249" name="Default Changelist" comment="Backend changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/Repository/DentistVisitDTORepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/Repository/DentistVisitDTORepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/controller/DentistAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/controller/DentistAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/dentistapp.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/controller/DentistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cgi/dentistapp/controller/DentistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/Repository/DentistVisitDTORepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/Repository/DentistVisitDTORepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/controller/DentistAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/controller/DentistAppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/service/DentistVisitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cgi/dentistapp/service/DentistVisitService.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,8 +121,17 @@
       <workItem from="1581770039629" duration="25963000" />
       <workItem from="1582021836565" duration="7568000" />
       <workItem from="1582047508160" duration="4523000" />
-      <workItem from="1582452979976" duration="1425000" />
+      <workItem from="1582452979976" duration="3324000" />
+      <workItem from="1582460830178" duration="4000" />
+      <workItem from="1582477842685" duration="3164000" />
     </task>
+    <task id="LOCAL−00001" summary="Backend changes">
+      <created>1582455688101</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1582455688101</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,10 +142,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Backend changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backend changes" />
   </component>
 </project>
